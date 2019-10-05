@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   var setupWindow = document.querySelector('.setup');
   var setupOpenBtn = document.querySelector('.setup-open');
   var setupCloseBtn = setupWindow.querySelector('.setup-close');
@@ -23,27 +23,21 @@
     document.removeEventListener('keydown', onSetupWindowEscPress);
   }
 
-  setupOpenBtn.addEventListener('click', function () {
-    openSetupWindow();
-  });
+  setupOpenBtn.addEventListener('click', openSetupWindow);
 
-  setupCloseBtn.addEventListener('click', function () {
-    closeSetupWindow();
-  });
+  setupCloseBtn.addEventListener('click', closeSetupWindow);
 
   setupOpenIcn.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
+    if (evt.keyCode === window.util.ESC_KEYCODE) {
       openSetupWindow();
     }
   });
 
   setupCloseBtn.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
+    if (evt.keyCode === window.util.ENTER_KEYCODE) {
       closeSetupWindow();
     }
   });
-
-
 
   setupWindowHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
@@ -90,7 +84,5 @@
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
-
   });
-
 })();

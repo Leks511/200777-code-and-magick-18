@@ -11,15 +11,13 @@
     }
   }
 
-  setupSubmitBtn.addEventListener('click', function () {
-    checkFormValidity();
-  });
+  setupSubmitBtn.addEventListener('click', checkFormValidity);
 
   setupSubmitBtn.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, checkFormValidity);
   });
 
-  wizardNameInput.addEventListener('invalid', function (evt) {
+  wizardNameInput.addEventListener('invalid', function () {
     if (wizardNameInput.validity.tooShort) {
       wizardNameInput.setCustomValidity('Имя персонажа не может содержать менее 2 символов');
     } else if (wizardNameInput.validity.tooLong) {
