@@ -8,7 +8,7 @@
   var setupWindowHandler = setupWindow.querySelector('.upload');
 
   function onSetupWindowEscPress(evt) {
-    if (evt.target !== wizardNameInput) {
+    if (!(evt.target.name === 'username')) {
       window.util.isEscEvent(evt, closeSetupWindow);
     }
   }

@@ -54,8 +54,8 @@
   for (var i = 0; i < QUANTITY_OF_WIZARDS; i++) {
     similarWizards[i] = {
       name: window.util.getRandomValue(NAMES) + ' ' + window.util.getRandomValue(SURNAMES),
-      coatColor: window.util.getRandomValue(window.colorConsts.COAT_COLORS),
-      eyesColor: window.util.getRandomValue(window.colorConsts.EYES_COLORS)
+      coatColor: window.util.getRandomValue(window.colors.COAT),
+      eyesColor: window.util.getRandomValue(window.colors.EYES)
     }
   }
 

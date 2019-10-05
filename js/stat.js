@@ -27,23 +27,23 @@
   var TOP_X_GAP = 120;
   var TOP_TEXT_Y = 30;
 
-  var renderCloud = function (ctx, x, y, color) {
+  function renderCloud(ctx, x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT)
   }
 
-  var renderText = function (ctx, text, x, y) {
+  function renderText(ctx, text, x, y) {
     ctx.fillStyle = FIRST_COLOR;
     ctx.font = FONT;
     ctx.fillText(text, x, y);
     ctx.textBaseline = 'hanging';
   }
 
-  var getSaturation = function () {
+  function getSaturation() {
     return Math.random().toFixed(2) * 100 + '%';
   }
 
-  var getMaxElement = function (arr) {
+  function getMaxElement(arr) {
     var maxValue = arr[0];
 
     if (arr.length === 1) {
@@ -68,15 +68,14 @@
     var maxTime = getMaxElement(times);
 
     for (var i = 0; i < names.length; i++) {
-      var playerIndex = i;
       var playerName = names[i];
       var playerRes = Math.floor(times[i]);
 
       var barHeight = BAR_HEIGHT * (times[i]) / maxTime;
       var barY = BAR_HEIGHT - barHeight + BAR_Y;
 
-      renderText(ctx, playerName, CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * playerIndex, CLOUD_Y + BAR_HEIGHT + BAR_Y);
-      renderText(ctx, playerRes, CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * playerIndex, barY - TEXT_HEIGHT);
+      renderText(ctx, playerName, CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + BAR_HEIGHT + BAR_Y);
+      renderText(ctx, playerRes, CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, barY - TEXT_HEIGHT);
 
       var saturationValue = getSaturation();
 
@@ -86,7 +85,7 @@
         ctx.fillStyle = YOURSELF_BAR_COLOR;
       }
 
-      ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * playerIndex, barY, BAR_WIDTH, barHeight);
+      ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, barY, BAR_WIDTH, barHeight);
     }
   }
 })();

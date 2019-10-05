@@ -3,6 +3,7 @@
 (function() {
   var setupForm = document.querySelector('.setup-wizard-form');
   var setupSubmitBtn = setupForm.querySelector('.setup-submit');
+  var wizardNameInput = setupForm.querySelector('.setup-user-name');
 
   function checkFormValidity() {
     if (wizardNameInput.validity) {
@@ -17,8 +18,6 @@
   setupSubmitBtn.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, checkFormValidity);
   });
-
-  var wizardNameInput = setupForm.querySelector('.setup-user-name');
 
   wizardNameInput.addEventListener('invalid', function (evt) {
     if (wizardNameInput.validity.tooShort) {

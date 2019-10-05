@@ -11,19 +11,19 @@
   var wizardFireballInput = document.querySelector('input[name="fireball-color"]');
 
   function changeWizardCoatColor() {
-    var newWizardCoatColor = window.util.getRandomValue(window.colorConsts.COAT_COLORS);
+    var newWizardCoatColor = window.util.getRandomValue(window.colors.COAT);
     wizardCoat.style.fill = newWizardCoatColor;
     wizardCoatInput.value = newWizardCoatColor;
   }
 
   function changeWizardEyesColor() {
-    var newWizardEyesColor = window.util.getRandomValue(window.colorConsts.EYES_COLORS);
+    var newWizardEyesColor = window.util.getRandomValue(window.colors.EYES);
     wizardEyes.style.fill = newWizardEyesColor;
     wizardEyesInput.value = newWizardEyesColor;
   }
 
   function changeWizardFireballColor() {
-    var newWizardFireballColor = window.util.getRandomValue(window.colorConsts.FIREBALL_COLORS);
+    var newWizardFireballColor = window.util.getRandomValue(window.colors.FIREBALL);
     wizardFireball.style.backgroundColor = newWizardFireballColor;
     wizardFireballInput.value = newWizardFireballColor;
   }
