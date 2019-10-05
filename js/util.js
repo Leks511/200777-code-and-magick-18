@@ -24,5 +24,5 @@
     getRandomValue: function (arr) {
       return arr[this.getRandomIndex(0, arr.length - 1)];
     }
-  }
+  };
 })();

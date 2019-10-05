@@ -74,7 +74,8 @@
       document.removeEventListener('mouseup', onMouseUp);
 
       if (dragged) {
-        function onClickPreventDefault(evt) {
+        // eslint-disable-next-line no-inner-declarations
+        function onClickPreventDefault() {
           evt.preventDefault();
           setupWindowHandler.removeEventListener('click', onClickPreventDefault);
         }
