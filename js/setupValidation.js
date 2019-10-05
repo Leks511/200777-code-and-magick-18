@@ -1,21 +1,8 @@
 'use strict';
 
-(function() {
+(function () {
   var setupForm = document.querySelector('.setup-wizard-form');
-  var setupSubmitBtn = setupForm.querySelector('.setup-submit');
   var wizardNameInput = setupForm.querySelector('.setup-user-name');
-
-  function checkFormValidity() {
-    if (wizardNameInput.validity) {
-      setupForm.sumbit();
-    }
-  }
-
-  setupSubmitBtn.addEventListener('click', checkFormValidity);
-
-  setupSubmitBtn.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, checkFormValidity);
-  });
 
   wizardNameInput.addEventListener('invalid', function () {
     if (wizardNameInput.validity.tooShort) {
