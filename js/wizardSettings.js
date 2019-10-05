@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
   var wizardCoatInput = document.querySelector('input[name="coat-color"]');
 

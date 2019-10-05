@@ -29,7 +29,7 @@
 
   function renderCloud(ctx, x, y, color) {
     ctx.fillStyle = color;
-    ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT)
+    ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
   }
 
   function renderText(ctx, text, x, y) {
@@ -79,7 +79,7 @@
 
       var saturationValue = getSaturation();
 
-      ctx.fillStyle = 'hsl(240, ' + saturationValue + ', 50%)'
+      ctx.fillStyle = 'hsl(240, ' + saturationValue + ', 50%)';
 
       if (playerName === 'Вы') {
         ctx.fillStyle = YOURSELF_BAR_COLOR;
@@ -87,5 +87,5 @@
 
       ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, barY, BAR_WIDTH, barHeight);
     }
-  }
+  };
 })();

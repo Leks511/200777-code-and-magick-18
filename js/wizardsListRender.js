@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   var NAMES = [
     'Иван',
     'Хуан Себастьян',
@@ -56,7 +56,7 @@
       name: window.util.getRandomValue(NAMES) + ' ' + window.util.getRandomValue(SURNAMES),
       coatColor: window.util.getRandomValue(window.colors.COAT),
       eyesColor: window.util.getRandomValue(window.colors.EYES)
-    }
+    };
   }
 
   addWizardsToDom(wizardsList);

@@ -9,12 +9,12 @@
     ENTER_KEYCODE: ENTER_KEYCODE,
 
     isEscEvent: function (evt, action) {
-      if (evt.keyCode === window.util.ESC_KEYCODE) {
+      if (evt.keyCode === this.ESC_KEYCODE) {
         action();
       }
     },
     isEnterEvent: function (evt, action) {
-      if (evt.keyCode === window.util.ENTER_KEYCODE) {
+      if (evt.keyCode === this.ENTER_KEYCODE) {
         action();
       }
     },
