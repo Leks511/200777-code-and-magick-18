@@ -29,18 +29,6 @@
     setupSimiliar.classList.remove('hidden');
   }
 
-  function onErrorWizardsLoad(errorMessage) {
-    var node = document.createElement('div');
-    node.style = 'z-index: 100; width:300px; height:auto; margin-left: -150px; text-align: center; background-color: red;';
-    node.style.position = 'absolute';
-    node.style.left = '50%';
-    node.style.top = '300px';
-    node.style.fontSize = '30px';
-
-    node.textContent = errorMessage;
-    document.body.insertAdjacentElement('afterbegin', node);
-  }
-
-  window.backend.load(onSuccessWizardsLoad, onErrorWizardsLoad);
+  window.backend.load(onSuccessWizardsLoad, window.backend.onErrorFormSubmit);
 })();
 

@@ -1,8 +1,9 @@
 'use strict';
 
 (function () {
-  var setupForm = document.querySelector('.setup-wizard-form');
-  var wizardNameInput = setupForm.querySelector('.setup-user-name');
+  var setupWindow = document.querySelector('.setup');
+  var setupForm = setupWindow.querySelector('.setup-wizard-form');
+  var wizardNameInput = setupWindow.querySelector('.setup-user-name');
 
   wizardNameInput.addEventListener('invalid', function () {
     if (wizardNameInput.validity.tooShort) {
@@ -23,5 +24,14 @@
     } else {
       target.setCustomValidity('');
     }
+  });
+
+  function onSuccessSetupFormSubmit() {
+    setupWindow.classList.add('hidden');
+  }
+
+  setupForm.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(setupForm), onSuccessSetupFormSubmit, window.backend.onErrorFormSubmit);
+    evt.preventDefault();
   });
 })();

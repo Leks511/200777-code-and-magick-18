@@ -2,7 +2,7 @@
 
 (function () {
   var URL_TO_POST = 'https://js.dump.academy/code-and-magick';
-  var URL_TO_GET = 'https://js.dump.academy/code-and-magick/dat';
+  var URL_TO_GET = 'https://js.dump.academy/code-and-magick/data';
 
   window.backend = {
     load: function (onLoad, onError) {
@@ -42,6 +42,17 @@
 
       xhr.open('POST', URL_TO_POST);
       xhr.send(data);
+    },
+    onErrorFormSubmit: function (errorMessage) {
+      var node = document.createElement('div');
+      node.style = 'z-index: 100; width:300px; height:auto; margin-left: -150px; text-align: center; background-color: red;';
+      node.style.position = 'absolute';
+      node.style.left = '50%';
+      node.style.top = '300px';
+      node.style.fontSize = '30px';
+
+      node.textContent = errorMessage;
+      document.body.insertAdjacentElement('afterbegin', node);
     }
   };
 })();
