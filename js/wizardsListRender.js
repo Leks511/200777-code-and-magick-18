@@ -17,7 +17,7 @@
     return wizardElement;
   }
 
-  function onSuccessWizardsLoad(wizards) {
+  function handleSuccessWizardsLoad(wizards) {
     var wizardsListFragment = new DocumentFragment();
 
     for (var i = 0; i < QUANTITY_OF_WIZARDS; i++) {
@@ -29,6 +29,6 @@
     setupSimiliar.classList.remove('hidden');
   }
 
-  window.backend.load(onSuccessWizardsLoad, window.backend.onErrorFormSubmit);
+  window.backend.load(handleSuccessWizardsLoad, window.backend.onErrorFormSubmit);
 })();
 
