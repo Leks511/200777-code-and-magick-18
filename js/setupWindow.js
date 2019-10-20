@@ -7,38 +7,41 @@
   var setupOpenIcn = document.querySelector('.setup-open-icon');
   var setupWindowHandler = setupWindow.querySelector('.upload');
 
-  function onSetupWindowEscPress(evt) {
-    if (!(evt.target.name === 'username')) {
-      window.util.isEscEvent(evt, closeSetupWindow);
-    }
-  }
-
-  function openSetupWindow() {
+  window.openSetupWindow = function () {
     setupWindow.classList.remove('hidden');
     document.addEventListener('keydown', onSetupWindowEscPress);
-  }
+  };
 
-  function closeSetupWindow() {
+  window.closeSetupWindow = function () {
     setupWindow.classList.add('hidden');
     document.removeEventListener('keydown', onSetupWindowEscPress);
+  };
+
+  function onSetupWindowEscPress(evt) {
+    if (!(evt.target.name === 'username')) {
+      window.util.isEscEvent(evt, window.closeSetupWindow);
+    }
   }
 
-  setupOpenBtn.addEventListener('click', openSetupWindow);
+  // Откроем окно по нажатию на элемент
+  setupOpenBtn.addEventListener('click', window.openSetupWindow);
 
-  setupCloseBtn.addEventListener('click', closeSetupWindow);
+  setupOpenBtn.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, window.openSetupWindow);
+  });
 
   setupOpenIcn.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.util.ESC_KEYCODE) {
-      openSetupWindow();
-    }
+    window.util.isEnterEvent(evt, window.openSetupWindow);
   });
+
+  // Закроем окно по нажатию на элемент
+  setupCloseBtn.addEventListener('click', window.closeSetupWindow);
 
   setupCloseBtn.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.util.ENTER_KEYCODE) {
-      closeSetupWindow();
-    }
+    window.util.isEnterEvent(evt, window.closeSetupWindow);
   });
 
+  // Drag-and-drop по окну настройки персонажа
   setupWindowHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 

@@ -26,12 +26,8 @@
     }
   });
 
-  function onSuccessSetupFormSubmit() {
-    setupWindow.classList.add('hidden');
-  }
-
   setupForm.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(setupForm), onSuccessSetupFormSubmit, window.backend.onErrorFormSubmit);
+    window.backend.save(new FormData(setupForm), window.closeSetupWindow, window.backend.onErrorFormSubmit);
     evt.preventDefault();
   });
 })();

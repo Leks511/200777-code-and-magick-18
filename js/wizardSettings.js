@@ -1,54 +1,54 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-invalid-this */
 'use strict';
 
 (function () {
-  var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
+  var wizardCoatElement = document.querySelector('.wizard-coat');
   var wizardCoatInput = document.querySelector('input[name="coat-color"]');
 
-  var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+  var wizardEyesElement = document.querySelector('.wizard-eyes');
   var wizardEyesInput = document.querySelector('input[name="eyes-color"]');
 
-  var wizardFireball = document.querySelector('.setup-fireball-wrap');
+  var wizardFireballElement = document.querySelector('.setup-fireball-wrap');
   var wizardFireballInput = document.querySelector('input[name="fireball-color"]');
 
-  function changeWizardCoatColor() {
-    var newWizardCoatColor = window.util.getRandomValue(window.colors.COAT);
-    wizardCoat.style.fill = newWizardCoatColor;
-    wizardCoatInput.value = newWizardCoatColor;
-  }
+  var wizard = {
+    onEyesChange: function (color) { },
+    onCoatChange: function (color) { }
+  };
 
-  function changeWizardEyesColor() {
-    var newWizardEyesColor = window.util.getRandomValue(window.colors.EYES);
-    wizardEyes.style.fill = newWizardEyesColor;
-    wizardEyesInput.value = newWizardEyesColor;
-  }
-
+  // Функция смены цвета фаербола
   function changeWizardFireballColor() {
     var newWizardFireballColor = window.util.getRandomValue(window.colors.FIREBALL);
-    wizardFireball.style.backgroundColor = newWizardFireballColor;
+    wizardFireballElement.style.backgroundColor = newWizardFireballColor;
     wizardFireballInput.value = newWizardFireballColor;
   }
 
-  wizardCoat.addEventListener('click', function () {
-    changeWizardCoatColor();
-  });
-
-  wizardCoat.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, changeWizardCoatColor);
-  });
-
-  wizardEyes.addEventListener('click', function () {
-    changeWizardEyesColor();
-  });
-
-  wizardEyes.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, changeWizardEyesColor);
-  });
-
-  wizardFireball.addEventListener('click', function () {
+  // Смена цвета фаебола по нажатию
+  wizardFireballElement.addEventListener('click', function () {
     changeWizardFireballColor();
   });
 
-  wizardFireball.addEventListener('keydown', function (evt) {
+  // Смена цвета куртки по нажатию
+  wizardCoatElement.addEventListener('click', function () {
+    var newColor = window.util.getRandomValue(window.colors.COAT);
+    this.style.fill = newColor;
+    wizardCoatInput.value = newColor;
+    wizard.onCoatChange(newColor);
+  });
+
+  // Смена цвета глаз по нажатию
+  wizardEyesElement.addEventListener('click', function () {
+    var newColor = window.util.getRandomValue(window.colors.EYES);
+    this.style.fill = newColor;
+    wizardEyesInput.value = newColor;
+    wizard.onEyesChange(newColor);
+  });
+
+  wizardFireballElement.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, changeWizardFireballColor);
   });
+
+  return window.wizard = wizard;
 })();
